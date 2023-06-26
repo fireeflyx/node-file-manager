@@ -6,6 +6,7 @@ import { cd, ls, up} from './features/navigation.js';
 import { calculateHash } from './features/hash.js';
 import { compress, decompress } from './features/compression.js';
 import { add, cat, rm, rn} from './features/filesOperation.js';
+import { os } from './features/os.js';
 
 
 export const startWork = async () => {
@@ -24,6 +25,7 @@ export const startWork = async () => {
             let command = input[0];
             let option1 = input[1];
             let option2 = input[2];
+
 
             try {
                 switch (command) {
@@ -53,6 +55,10 @@ export const startWork = async () => {
                     }
                     case commands.commandsWithOneOption.rm: {
                         await rm(currentWorkingDirectory, option1);
+                        break;
+                    }
+                    case commands.commandsWithOneOption.os: {
+                        await os(option1);
                         break;
                     }
                     case commands.commandsWithTwoOptions.rn: {
