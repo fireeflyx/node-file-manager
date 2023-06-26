@@ -1,11 +1,11 @@
 import { readFile } from 'fs/promises';
 import { createHash } from 'crypto';
-import { normalize, join} from 'path';
+import { normalizePath } from '../utils.js';
 
 
 export const calculateHash = async (currentPath, pathToFile) => {
     try {
-        pathToFile = normalize(join(currentPath, pathToFile));
+        pathToFile = normalizePath(currentPath, pathToFile);
 
         const output = await readFile(pathToFile);
 

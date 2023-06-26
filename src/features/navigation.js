@@ -1,6 +1,7 @@
 import { readdir, access } from 'fs/promises';
-import { dirname, join, normalize } from 'path';
+import { dirname, join } from 'path';
 import * as fs from 'fs';
+import { normalizePath } from '../utils.js';
 
 
 export const up = (path) => {
@@ -23,7 +24,7 @@ export const ls = async (path) => {
 }
 
 export const cd = async (currentPath, target) => {
-    let normalizedPath = normalize(join(currentPath, target));
+    let normalizedPath = normalizePath(currentPath, target);
     console.log(normalizedPath);
     try {
         await access(normalizedPath);
