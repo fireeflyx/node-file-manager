@@ -2,9 +2,10 @@ import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import { printCurrentDirectory, printFarewell, printGreeting } from "./utils.js";
 import { commands } from './commands.js';
-import { cd, ls, up } from './features/navigation.js';
+import { cd, ls, up} from './features/navigation.js';
 import { calculateHash } from './features/hash.js';
 import { compress, decompress } from './features/compression.js';
+import { add, cat, rm, rn} from './features/filesOperation.js';
 
 
 export const startWork = async () => {
@@ -40,6 +41,22 @@ export const startWork = async () => {
                     }
                     case commands.commandsWithOneOption.hash: {
                         await calculateHash(currentWorkingDirectory, option1);
+                        break;
+                    }
+                    case commands.commandsWithOneOption.cat: {
+                        await cat(currentWorkingDirectory, option1);
+                        break;
+                    }
+                    case commands.commandsWithOneOption.add: {
+                        await add(currentWorkingDirectory, option1);
+                        break;
+                    }
+                    case commands.commandsWithOneOption.rm: {
+                        await rm(currentWorkingDirectory, option1);
+                        break;
+                    }
+                    case commands.commandsWithTwoOptions.rn: {
+                        await rn(currentWorkingDirectory, option1, option2);
                         break;
                     }
                     case commands.commandsWithTwoOptions.compress: {
