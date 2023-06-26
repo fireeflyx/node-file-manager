@@ -2,7 +2,6 @@
 
 
 The file manager is able to do the following:
-
 * Work using CLI
 * Perform basic file operations (copy, move, delete, rename, etc.)
 * Utilize Streams API
