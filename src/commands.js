@@ -1,21 +1,5 @@
 export const commands = {
-    commandsWithoutOptions: {
-        up,
-        ls
-    },
-    commandsWithOneOption: {
-        cd,
-        cat,
-        add,
-        rm,
-        os,
-        hash
-    },
-    commandsWithTwoOptions: {
-        rn,
-        cp,
-        mv,
-        compress,
-        decompress
-    }
+    commandsWithoutOptions: {up: 'up', ls: 'ls'},
+    commandsWithOneOption: {cd: 'cd', cat: 'cat', add: 'add', rm: 'rm', os: 'os', hash: 'hash'},
+    commandsWithTwoOptions: {rn: 'rn', cp: 'cp', mv: 'mv', compress: 'compress', decompress: 'decompress'}
 }
