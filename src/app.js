@@ -4,6 +4,7 @@ import { printCurrentDirectory, printFarewell, printGreeting } from "./utils.js"
 import { commands } from './commands.js';
 import { cd, ls, up } from './features/navigation.js';
 import { calculateHash } from './features/hash.js';
+import { compress, decompress } from './features/compression.js';
 
 
 export const startWork = async () => {
@@ -20,7 +21,8 @@ export const startWork = async () => {
         try {
             const input = line.split(" ");
             let command = input[0];
-            let option = input[1];
+            let option1 = input[1];
+            let option2 = input[2];
 
             try {
                 switch (command) {
@@ -33,11 +35,19 @@ export const startWork = async () => {
                         break;
                     }
                     case commands.commandsWithOneOption.cd: {
-                        currentWorkingDirectory = await cd(currentWorkingDirectory, option);
+                        currentWorkingDirectory = await cd(currentWorkingDirectory, option1);
                         break;
                     }
                     case commands.commandsWithOneOption.hash: {
-                        await calculateHash(currentWorkingDirectory, option);
+                        await calculateHash(currentWorkingDirectory, option1);
+                        break;
+                    }
+                    case commands.commandsWithTwoOptions.compress: {
+                        await compress(currentWorkingDirectory, option1, option2);
+                        break;
+                    }
+                    case commands.commandsWithTwoOptions.decompress: {
+                        await decompress(currentWorkingDirectory, option1, option2);
                         break;
                     }
                     case '.exit': {
