@@ -3,6 +3,7 @@ import { stdin as input, stdout as output } from 'node:process';
 import { printCurrentDirectory, printFarewell, printGreeting } from "./utils.js";
 import { commands } from './commands.js';
 import { cd, ls, up } from './features/navigation.js';
+import { calculateHash } from './features/hash.js';
 
 
 export const startWork = async () => {
@@ -33,6 +34,10 @@ export const startWork = async () => {
                     }
                     case commands.commandsWithOneOption.cd: {
                         currentWorkingDirectory = await cd(currentWorkingDirectory, option);
+                        break;
+                    }
+                    case commands.commandsWithOneOption.hash: {
+                        await calculateHash(currentWorkingDirectory, option);
                         break;
                     }
                     case '.exit': {
