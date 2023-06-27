@@ -1,6 +1,7 @@
 import { createBrotliCompress, createBrotliDecompress } from 'zlib';
 import * as fs from 'fs';
 import { normalizePath } from '../utils.js';
+import { join, normalize } from 'path';
 
 export const compress = async (currentPath, pathToFile, pathToDest) => {
     pathToFile = normalizePath(currentPath, pathToFile);
